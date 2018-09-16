@@ -1,4 +1,8 @@
 classdef LQG < matlab.mixin.Copyable
+    %% LQG Linear-Quadratc-Gaussian
+    %
+    % Tobias Winner, 15.09.2018
+    % email: winner.tobias@gmail.com
     
     properties ( SetAccess=private )
         horizon
