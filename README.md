@@ -113,13 +113,13 @@ title('open loop control')
 The sampled data also tell us the cost per simulated trajectory. The exact expected value can be computed using the LQG.value command:
 
 ```matlab
-mean(data.cost.total)
+>> mean(data.cost.total)
 
 ans =
 
     0.0255
 
-lqg.value
+>> lqg.value
 
 ans =
 
@@ -152,7 +152,7 @@ title('feedback control')
 We can confirm that the feedback helped lowering the expected cost:
 
 ```matlab
-mean(data.cost.total)
+>> mean(data.cost.total)
 
 ans =
 
