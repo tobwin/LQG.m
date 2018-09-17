@@ -92,7 +92,8 @@ Let us next add some noise to the system. All noise covariance matrices must be 
 lqg.X = [.05; 0; 0; 0];
 lqg.V = [0; 0; 10/m; 0];
 
-x = LQG.time2trl(lqg.sample(10).x);
+data = lqg.sample(10);
+x = LQG.time2trl(data.x);
 
 figure, hold on
 for trl = 1:10
@@ -105,3 +106,22 @@ title('open loop control')
 ```
 
 ![Open loop](https://raw.githubusercontent.com/tobwin/LQG.m/master/doc/Fig3.png)
+
+
+### Statistics
+
+The sampled data also tell us the cost per simulated trajectory. The exact expected value can be computed using the LQG.value command:
+
+```matlab
+mean(data.cost.total)
+
+ans =
+
+    0.0255
+
+lqg.value
+
+ans =
+
+    0.0267
+```
