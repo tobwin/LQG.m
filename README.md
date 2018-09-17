@@ -86,4 +86,22 @@ title('deterministic control')
 
 ![Deterministic control](https://raw.githubusercontent.com/tobwin/LQG.m/master/doc/Fig2.png)
 
+Let us next add some noise to the system. All noise covariance matrices must be specified in square root form: For matrix V, the state transition error v will be distrbuted as _N_(0,VV'). Similarly, the initial state will be distributed _N_(x,XX'). We can look at the resulting system trajectories using the LQG.sample function:
 
+```matlab
+lqg.X = [.05; 0; 0; 0];
+lqg.V = [0; 0; 10/m; 0];
+
+x = LQG.time2trl(lqg.sample(10).x);
+
+figure, hold on
+for trl = 1:10
+    plot(t,x{trl}(1,:),'k')
+end
+ylim([0 2])
+xlabel('time (s)')
+ylabel('height (m)')
+title('open loop control')
+```
+
+![Open loop](https://raw.githubusercontent.com/tobwin/LQG.m/master/doc/Fig3.png)
