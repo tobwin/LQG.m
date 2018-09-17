@@ -44,7 +44,7 @@ We must initialize the state with the correct acceleration and the constant 1. L
 lqg.x = [1.5 0 9.81 1]';
 ```
 
-Let's examine the system's behavior over time. We can compute the systems deterministic trajectory by calling LQG.mean and plotting the position variable:
+Let's examine the system's behavior over time. We can compute the system's deterministic trajectory by calling LQG.mean and plotting the position variable:
 
 ```matlab
 t = linspace(0,T,floor(T/dt));
@@ -128,7 +128,7 @@ ans =
 
 ### Linear-Quadratic-Estimation (Kalman filter)
 
-Finally, observing the point-mass' position should allow the controller to stabilize the system. We add a corresponding  matrix C as well as some observation noise W. The Kalman filter together with the state prediction and estimation covariances will again be computed on the fly:
+Finally, observing the point-mass' position should allow the controller to stabilize the system. We add a corresponding  matrix C as well as some observation noise W. The Kalman filter together with the state prediction and estimation error covariances will again be computed on the fly:
 
 ```matlab
 lqg.C = [1 0 0 0];
