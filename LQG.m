@@ -1,5 +1,58 @@
 classdef LQG < matlab.mixin.Copyable
-    %% LQG Linear-Quadratc-Gaussian
+    % LQG: copyable handle class for time-varying Linear-Quadratic-Gaussian estimation and control
+    % (discrete-time, finite horizon):
+    %
+    %     Dynamics: x{t+1} = A{t}*x{t} + B{t}*L{t}*x1{t} + v{t}
+    %     Feedback: y{t} = C{t}*x{t} + w{t}
+    %     Cost: J(t) = x{t}'*Q{t}*x{t} + u{t}'*R{t}*u{t}
+    %
+    %     x{1} ~ N(x0{1},X*X')
+    %     v{t} ~ N(0,V*V')
+    %     w{t} ~ N(0,W*W')
+    %
+    %     Here, x0{t} and x{t} are the a-prioi and a-posteriori state estimates obtained through Kalman-filtering.
+    %
+    % ---------- System Definition ----------
+    %
+    % lqg = LQG(T, 'A', A) initializes an LQG object with time horizon T and state transition matrices A{t}.
+    %
+    % lqg.define('A',A) defines the cell array lqg.A to represent
+    %     time-varying state transition matrices A{t}. A can be a cell array
+    %     of T-1 matrices A{t} s.t. size(A{t+1},1) = size(A{t},2), or a
+    %     matrix. If A is a matrix, then lqg.A{t} = lqg.A{t+1} for all t.
+    %
+    %     B{t}, C{t}, R{t}, V{t}, W{t} are defined analogously. Defaults
+    %     are 0.
+    %
+    %     Several identical matrices can be defined using, e.g., lqg.define('ABCQRVWX',M).
+    %
+    %     Note: - X must be defined to be a matrix.
+    %           - If Q is a matrix, lqg.define('Q',Q) will define lqg.Q{T} = Q, and
+    %             lqg.Q{t} = zeros(size(A{t},2)) for all t<T.
+    %
+    %
+    % ---------- Sampling ----------
+    %
+    % lqg.sample(N) samples N system trajectories.
+    %
+    % lqg.sample(N,'x',x), where x is a n times N matrix with initial state dimension n, draws N samples with
+    %     initial states x{1} = repmat(x0,1,N) + X*x.
+    %
+    % lqg.sample(N,'v',v,'w',w) draws N samples with specified v{t} = V*v(:,:,t) and w{t} = W*w(:,:,t).
+    %
+    % lqg.sample(N,'u',u) draws samples with open loop controls u{t}.
+    %
+    % lqg.sample(N,'y',y) computes state estimates and predictions x1{t} and x0{t+1}, as well as (hypothetical) controls u{t}.
+    %
+    %
+    % ---------- Statistics ----------
+    %
+    % lqg.mean returns the expected trajectories of x, y and u
+    %
+    % lqg.cov returns the covariance matrices of x, y and u
+    %
+    % lqg.value returns the expected quadratic cost
+    %
     %
     % Tobias Winner, 15.09.2018
     % email: winner.tobias@gmail.com
