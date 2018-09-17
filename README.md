@@ -149,4 +149,18 @@ title('feedback control')
 
 ![Feedback control](https://raw.githubusercontent.com/tobwin/LQG.m/master/doc/Fig4.png)
 
+We can confirm that the feedback helped lowering the expected cost:
 
+```matlab
+mean(data.cost.total)
+
+ans =
+
+    0.0204
+
+>> lqg.value
+
+ans =
+
+    0.0211
+```
