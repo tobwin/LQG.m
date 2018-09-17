@@ -1,6 +1,6 @@
 # LQG
 
-LQG.m implements a copyable handle class for *discrete-time, finite-horizon* [Linear-Quadratic-Gaussian](https://en.wikipedia.org/wiki/Linear%E2%80%93quadratic%E2%80%93Gaussian_control#Discrete_time) estimation and control.
+LQG.m implements a copyable handle class for discrete-time, finite-horizon [Linear-Quadratic-Gaussian](https://en.wikipedia.org/wiki/Linear%E2%80%93quadratic%E2%80%93Gaussian_control#Discrete_time) estimation and control.
 
 An __LQG object__ represents time-varying system dynamics x<sub>t+1</sub> = A<sub>t</sub>x<sub>t</sub> + B<sub>t</sub>u<sub>t</sub> + v<sub>t</sub> and observations y<sub>t</sub> = C<sub>t</sub>x<sub>t</sub> + w<sub>t</sub> together with a quadratic cost function x<sub>t</sub><sup>T</sup>Q<sub>t</sub>x<sub>t</sub> + u<sub>t</sub><sup>T</sup>R<sub>t</sub>u<sub>t</sub>.
 The corresponding [Linear-Quadratic-Regulator](https://en.wikipedia.org/wiki/Linear%E2%80%93quadratic_regulator#Finite-horizon,_discrete-time_LQR) end [Linear-Quadratic-Estimator](https://en.wikipedia.org/wiki/Kalman_filter#Details) are implemented as dependent object properties and thus computed on the fly. 
