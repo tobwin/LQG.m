@@ -125,3 +125,28 @@ ans =
 
     0.0267
 ```
+
+### Linear-Quadratic-Estimation (Kalman filter)
+
+Finally, observing the point-mass' position should allow the controller to stabilize the system. We add a corresponding  matrix C as well as some observation noise W. The Kalman filter together with the state prediction and estimation covariances will again be computed on the fly:
+
+```matlab
+lqg.C = [1 0 0 0];
+lqg.W = 1;
+
+data = lqg.sample(10);
+x = LQG.time2trl(data.x);
+
+figure, hold on
+for trl = 1:10
+    plot(t,x{trl}(1,:),'k','LineWidth',1)
+end
+ylim([0 2])
+xlabel('time (s)')
+ylabel('height (m)')
+title('feedback control')
+```
+
+![Feedback control](https://raw.githubusercontent.com/tobwin/LQG.m/master/doc/Fig4.png)
+
+
