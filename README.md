@@ -7,9 +7,7 @@ The corresponding [Linear-Quadratic-Regulator](https://en.wikipedia.org/wiki/Lin
 
 Class methods include sampling as well as the computation of various __statistics__, including the __expected cost__ under optimal or custom linear feedback control.
 
-Below we use a toy-model to illustrate class functionality. Further information can be found using the _help LQG_ command in MATLAB or, equivalently, in the source code. The class is self-contained and should run without any dependencies.
-
-For remaining questions, feedback etc. feel welcome to email winner.tobias@gmail.com
+Below we use a toy-model to illustrate class functionality. Further information can be found using the _help LQG_ command in MATLAB. For remaining questions, feedback etc. feel welcome to email winner.tobias@gmail.com
 
 
 ## Example
