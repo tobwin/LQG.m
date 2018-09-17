@@ -5,7 +5,7 @@ LQG.m implements a copyable handle class for discrete-time, finite-horizon [Line
 An __LQG object__ represents time-varying system dynamics x<sub>t+1</sub> = A<sub>t</sub>x<sub>t</sub> + B<sub>t</sub>u<sub>t</sub> + v<sub>t</sub> and observations y<sub>t</sub> = C<sub>t</sub>x<sub>t</sub> + w<sub>t</sub> together with a quadratic cost function x<sub>t</sub><sup>T</sup>Q<sub>t</sub>x<sub>t</sub> + u<sub>t</sub><sup>T</sup>R<sub>t</sub>u<sub>t</sub>.
 The corresponding [Linear-Quadratic-Regulator](https://en.wikipedia.org/wiki/Linear%E2%80%93quadratic_regulator#Finite-horizon,_discrete-time_LQR) end [Linear-Quadratic-Estimator](https://en.wikipedia.org/wiki/Kalman_filter#Details) are implemented as dependent object properties and thus computed on the fly. 
 
-Class methods include sampling as well as the computation of various __statistics__, including the __expected cost__ under optimal or custom linear feedback control.
+Class methods include __sampling__ as well as the computation of various __statistics__, including the __expected cost__ under optimal or custom linear feedback control.
 
 Below we use a toy-model to illustrate class functionality. Further information can be found using the _help LQG_ command in MATLAB. For remaining questions, feedback etc. feel welcome to email winner.tobias@gmail.com
 
