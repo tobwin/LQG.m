@@ -10,7 +10,7 @@ classdef LQG < matlab.mixin.Copyable
     %     v{t} ~ N(0,V*V')
     %     w{t} ~ N(0,W*W')
     %
-    %     Here, x0{t} and x{t} are the a-prioi and a-posteriori state estimates obtained through Kalman-filtering.
+    %     Here, x1{t} is the a-posteriori state estimate obtained through Kalman-filtering.
     %
     % ---------- System Definition ----------
     %
